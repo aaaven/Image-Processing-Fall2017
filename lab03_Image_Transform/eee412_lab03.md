@@ -1,4 +1,5 @@
-<img src = "images/logo.png", alt = "Histogram Comparison'" width = "150">
+<img src = "images/logo.png", alt = "Histogram Comparison" width = "150">
+
 #### **MultiMedia Telecommunication, M.S. Program @ [XJTLU](http://www.xjtlu.edu.cn/en/)**
 
 # Image and Video Processing | EEE412
@@ -153,13 +154,18 @@ imagesc(abs(log2(fftshift(fft2(im)))));
 print('images/t2_b2','-dpng');
 ```
 Figure response to subtask a will be like this:
+
 **Figure 2.a:** Original IM
+
 <img src = "images/t2_a.png", alt = "Original IM'" width = "330">
+
 ==**Observation for subtask a:**==The image signal remain the same on Y axis and repeat with a period on X axis, so the answer is yes, it is a periodic signal/ image.
 Figures response to subtask b are attached below, the DFT image uses only fft2() on left, and the one applied fftshift() on right:
 
 **Figure 2.b1:** log of magnitude of 2D-DFT & **Figure 2.b2:** log of magnitude of fftshift 2D-DFT
+
 <img src = "images/t2_b1.png", alt = "Original IM" width = 330><img src = "images/t2_b2.png", alt = "Original IM" width = 330>
+
 **==Observation for subtask b:==**The original image has a quite simple DFT, for the DFT image without fftshift(), there are three bright spots located on the first line of the image, the origin on top left as average gray level value, and the other one close top left connr and one close the top right conner. as main frequencies. With fftshift() function, it will simply move the dots to the center of the image, and the shifted(fftshift()) DFT has three bright spots symmetrically located in the center of the DFT image, origin moves to the center.
 Change N to width/8, and run matlab code attached below for **==subtask c==**, 
 
@@ -183,8 +189,11 @@ imagesc(abs(log2(fftshift(fft2(im)))));
 print('images/t2_c3','-dpng');
 ```
 **Figure 2.c1:** IM with Changed N
+
 <img src = "images/t2_c1.png", alt = "Original IM'" width = "330">
+
 **Figure 2.c2:** log of magnitude of 2D-DFT with Changed N & **Figure 2.c3:** log of magnitude of fftshift 2D-DFT
+
 <img src = "images/t2_c2.png", alt = "Original IM'" width = "330"><img src = "images/t2_c3.png", alt = "Original IM'" width = "330">
 
 **Compare results of ==subtask c== with original one and implementation:** The DFT image from the changed N is still quite simple and with 3 bright dots in the image, from the image before fftshift(), the difference are hard to tell, but with the fftshifted image, even though these three dots remains symmetrically centered on the image, it is quite clear that the peak frequencies get closer to each other, which can be explained by the fact that N as period of the cos function increases and results in DFT image the peak frequencies gets closer.
@@ -208,16 +217,22 @@ imagesc(abs(log2(fftshift(fft2(im)))));
 print('images/t2_d3','-dpng');
 ```
 **Figure 2.d1:** Original IM
+
 <img src = "images/t2_d1.png", alt = "Original IM'" width = "330">
+
 **Figure 2.d2:** log of magnitude of 2D-DFT & **Figure 2.d3:** log of magnitude of fftshift 2D-DFT
+
 <img src = "images/t2_d2.png", alt = "Original IM'" width = "330"><img src = "images/t2_d3.png", alt = "Original IM" width = "330">
+
 **Compare results of ==subtask d== with original one and implementation:** As a not pure cos signal, the DFT image has 5 bright dots, origin remians the same but as sum of two cos function(happen to be signals in b and c), so it has 2*2 = 4 peak frequencies(5 in total) and simply a overlay of previous 2 DFT images.
 
 ## Task03:
 **Solution:**
 Solution and workflow for this task is organised as the following figure:
 **Figure03.03** Workflow diagram:
+
 <img src = "images/t03diagram.png", alt = "diagram" align = 'middle' width = 500>
+
 Since the operation will be carried out in transform domain, first, the image is transformed to frequency domain, and there a filter will be applied. When operarion is done, the result will go through an inverse transform process and be converted to spational domian. With the code below will get the fence removed from the original image: 
 
 ```matlab
@@ -241,18 +256,26 @@ im_inverse_fft = uint8(abs(ifft2(im_inverse_fftshift)));
 imwrite(im_inverse_fft,'images/remove_fence.png');
 ```
 The out come will be like:
+
 <img src = "images/remove_fence.png", alt = "remove_fence" align = "middle" width = 300>
+
 What the code does here is first transform the image into frequency domain, as figures shows below, for better visual effect, the third plot take the **log of maganitude** and also all images are showed with **imagesc()** function:
 **Figure03.03** From Spational Domain to Frequency Domain:
 
 <img src = "images/t03_dft.png", alt = "remove_fence" align = "middle">
+
 and then construct a filter, shows with **imagesc()** function graph on leftm and (for better visual effect, log of maganitude image is applied filter and be showed here) filter is applied in transformed domain.
 
 **Figure03.04** Filter & **Figure03.04** DCT image with filter.
-<img src = "images/t03_filter.png"  alt = "remove_fence" width = 330><img src = "images/im_log_filter.png"  alt = "remove_fence" width = 330>
+
+<img src = "images/t03_filter.png"  alt = "remove_fence" width = 330>
+
+<img src = "images/im_log_filter.png"  alt = "remove_fence" width = 330>
 
 Then apply the filter to the shift DFT image(**NOT** the log of maganitude shift image) and inverse the fftshift and dft process:
+
 <img src = "images/t03_inverse.png", alt = "inverse" align = "middle">
+
 **Comments:** Considering the difficulty of the task itself, the result is acceptable,  not quite satisfying yet fine. With a larger **h (in code line 9)** and smaller **w (in code line 9)** value, the vertical fence can be better removed and with a smoother gradient at the removed fences location but meanwhile the image will be more blurry.  A balance has to be made here to acheive the best result.
 
 </br>
@@ -334,21 +357,28 @@ imwrite(im_lanczos3_420,'images/im_lanczos3_420.png');
 psnr_lanczos3_420 = psnr(im_lanczos3_420,im,255)
 ```
 And psnr values are recorded in the table, resized images with different techniques are attached below:
+
 For original image **'lenna_ds440.bmp'** with size 256 * 512:
+
 **Figure04.01** Reference image  & **Figure04.02** Original Image 440
 
-<img src = "images/lenna512.bmp", width = 200> <img src = "images/lenna_ds440.bmp", width = 200>
+<img src = "images/lenna512.bmp", width = 200> 
+
+<img src = "images/lenna_ds440.bmp", width = 200>
 
 **Figure04.03 to 04.05** Resized Image with zero padding, imresize(kernels nearest, lanczos3) (Left to Right).  
+
 <img src = "images/im_zp_440.png", width = 200> <img src = "images/im_nearest_440.png", width = 200> <img src = "images/im_lanczos3_440.png", width = 200>
 
 For original image **'lenna_ds420.bmp'** with size 256 * 256:
 **Figure04.06** Reference image  & **Figure04.07** Original Image 420
 
-<img src = "images/lenna512.bmp", width = 200> <img src = "images/lenna_ds420.bmp", width = 100>
+<img src = "images/lenna512.bmp", width = 200><img src = "images/lenna_ds420.bmp", width = 100>
 
 **Figure04.08 to 04.10** Resized Image with zero padding, imresize(kernels nearest, lanczos3)(Left to Right).  
+
 <img src = "images/im_zp_420.png", width = 200> <img src = "images/im_nearest_420.png", width = 200> <img src = "images/im_lanczos3_420.png", width = 200>
+
 **Comments on different methods:**From a subjective view, the differences between the result from zero padding technique and matlab function imresize are not very obvious not even noticale. Compare to the reference image, both methods work very well and sucessfully resized the image,  same conclusion can also be obtained from the evaluation of the psnr values.
 
 ## Task05
@@ -480,6 +510,7 @@ im_c_invert = recover_image( im_c_DCT,my_DCT_bases );
 ```
 
 Obtained results are like: 
+
 <img src = "images/t05_inverse.png">
 and show in matlab console:
 
