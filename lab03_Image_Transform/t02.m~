@@ -1,0 +1,16 @@
+width = 256;
+N = width/16;
+n = [1:width]-1;
+x = 1 + cos(2*pi*n/N);
+im = ones(width,1)*x;
+
+t2_a = figure('Name','Original IM');
+imagesc(im)
+print('images/t2_a','-dpng');
+
+t2_a = figure('Name','Original IM');
+figure
+imagesc(abs(log2(fft2(im))))
+
+figure
+imagesc(abs(log2(fftshift(fft2(im)))))
