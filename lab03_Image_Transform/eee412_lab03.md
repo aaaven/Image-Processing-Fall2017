@@ -1,4 +1,4 @@
-<img src = "images/logo.png", alt = "Histogram Comparison" width = "150">
+<img src = "images/logo.png" alt = "Histogram Comparison" width = "150">
 
 #### **MultiMedia Telecommunication, M.S. Program @ [XJTLU](http://www.xjtlu.edu.cn/en/)**
 
