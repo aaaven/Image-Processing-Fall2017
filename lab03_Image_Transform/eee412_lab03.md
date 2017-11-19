@@ -157,14 +157,14 @@ Figure response to subtask a will be like this:
 
 **Figure 2.a:** Original IM
 
-<img src = "images/t2_a.png", alt = "Original IM'" width = "330">
+<img src = "images/t2_a.png", alt = "Original IM'" align="middle" width = "330">
 
 ==**Observation for subtask a:**==The image signal remain the same on Y axis and repeat with a period on X axis, so the answer is yes, it is a periodic signal/ image.
 Figures response to subtask b are attached below, the DFT image uses only fft2() on left, and the one applied fftshift() on right:
 
 **Figure 2.b1:** log of magnitude of 2D-DFT & **Figure 2.b2:** log of magnitude of fftshift 2D-DFT
 
-<img src = "images/t2_b1.png", alt = "Original IM" width = 330><img src = "images/t2_b2.png", alt = "Original IM" width = 330>
+<img src = "images/t2_b1.png", alt = "Original IM" align="middle" width = 330><img src = "images/t2_b2.png", alt = "Original IM" align="middle" width = 330>
 
 **==Observation for subtask b:==**The original image has a quite simple DFT, for the DFT image without fftshift(), there are three bright spots located on the first line of the image, the origin on top left as average gray level value, and the other one close top left connr and one close the top right conner. as main frequencies. With fftshift() function, it will simply move the dots to the center of the image, and the shifted(fftshift()) DFT has three bright spots symmetrically located in the center of the DFT image, origin moves to the center.
 Change N to width/8, and run matlab code attached below for **==subtask c==**, 
@@ -190,11 +190,11 @@ print('images/t2_c3','-dpng');
 ```
 **Figure 2.c1:** IM with Changed N
 
-<img src = "images/t2_c1.png", alt = "Original IM'" width = "330">
+<img src = "images/t2_c1.png", alt = "Original IM'" align="middle" width = "330">
 
 **Figure 2.c2:** log of magnitude of 2D-DFT with Changed N & **Figure 2.c3:** log of magnitude of fftshift 2D-DFT
 
-<img src = "images/t2_c2.png", alt = "Original IM'" width = "330"><img src = "images/t2_c3.png", alt = "Original IM'" width = "330">
+<img src = "images/t2_c2.png", alt = "Original IM'" align="middle" width = "330"><img src = "images/t2_c3.png", alt = "Original IM'" align="middle" width = "330">
 
 **Compare results of ==subtask c== with original one and implementation:** The DFT image from the changed N is still quite simple and with 3 bright dots in the image, from the image before fftshift(), the difference are hard to tell, but with the fftshifted image, even though these three dots remains symmetrically centered on the image, it is quite clear that the peak frequencies get closer to each other, which can be explained by the fact that N as period of the cos function increases and results in DFT image the peak frequencies gets closer.
 
@@ -218,11 +218,11 @@ print('images/t2_d3','-dpng');
 ```
 **Figure 2.d1:** Original IM
 
-<img src = "images/t2_d1.png", alt = "Original IM'" width = "330">
+<img src = "images/t2_d1.png", alt = "Original IM'" align="middle" width = "330">
 
 **Figure 2.d2:** log of magnitude of 2D-DFT & **Figure 2.d3:** log of magnitude of fftshift 2D-DFT
 
-<img src = "images/t2_d2.png", alt = "Original IM'" width = "330"><img src = "images/t2_d3.png", alt = "Original IM" width = "330">
+<img src = "images/t2_d2.png", alt = "Original IM'" align="middle" width = "330"><img src = "images/t2_d3.png", alt = "Original IM" width = "330">
 
 **Compare results of ==subtask d== with original one and implementation:** As a not pure cos signal, the DFT image has 5 bright dots, origin remians the same but as sum of two cos function(happen to be signals in b and c), so it has 2*2 = 4 peak frequencies(5 in total) and simply a overlay of previous 2 DFT images.
 
