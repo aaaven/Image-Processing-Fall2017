@@ -1,0 +1,32 @@
+clear;
+
+im = imread('images/lenna512.bmp');
+
+hist = imhist(im);
+p = hist/sum(hist);                 %normalize histgram and probability 
+symbols = 0:255;
+
+[Huffman_dictionary,avglen] = huffmandict(symbols,p);
+CR = 8/avglen;
+
+[w,h] = size(im);
+imc = cell(w,h);
+for i = 1:w
+    for j = 1:h
+        pixel_value = im(i,j);
+        imc(i,j) = Huffman_dictionary(pixel_value,2);
+    end
+end
+% 
+% imo = cell(w,h);
+% for i = 1:w
+%     for j = 1:h
+%         for k = 1:255
+%             if isequal(imc(i,j), Huffman_dictionary(k,2))
+%                 imo(i,j) = Huffman_dictionary(k,1);
+%             end
+%         end
+%     end
+% end
+
+imo = Huffman_decompression(Huffman_dictionary,imc);
