@@ -358,7 +358,7 @@ For original image **'lenna_ds420.bmp'** with size 256 * 256:
 
 **Figure04.08 to 04.10** Resized Image with zero padding, imresize(kernels nearest, lanczos3)(Left to Right).  
 
-<img src = "images/im_zp_420.png", width = 200> <img src = "images/im_nearest_420.png" width = 200> <img src = "images/im_lanczos3_420.png" width = 200>
+<img src = "images/im_zp_420.png" width = 200> <img src = "images/im_nearest_420.png" width = 200> <img src = "images/im_lanczos3_420.png" width = 200>
 
 **Comments on different methods:**From a subjective view, the differences between the result from zero padding technique and matlab function imresize are not very obvious not even noticale. Compare to the reference image, both methods work very well and sucessfully resized the image,  same conclusion can also be obtained from the evaluation of the psnr values.
 
