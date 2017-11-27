@@ -90,7 +90,7 @@ And figure like below is expected:
 
 **Figure 2.1:** Histogram Comparison
 
-<img src = "images/t2_hist_comparison.png", alt = "Histogram Comparison'" width = "600">
+<img src = "images/t2_hist_comparison.png" alt = "Histogram Comparison'" width = "600">
 
 **Intepretion**:
 
@@ -188,12 +188,12 @@ and figures like below are expected:
 
 **Figure 03.1**: Image Comparision
 
- <img src = "images/im_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/im_comparision.png" alt = "Histogram Comparison" width = "600">
  
 
 **Figure 03.2**: Histogram Comparision
 
- <img src = "images/t3_hist_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/t3_hist_comparision.png" alt = "Histogram Comparison" width = "600">
  
  
  **Intepretion**:
@@ -242,11 +242,11 @@ The histogram and image comparision will be like figures attached below:
 
 **Figure 03.3**: Image Comparision
 
- <img src = "images/hist_different_se_range.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/hist_different_se_range.png" width = "600">
 
 **Figure 03.4**: Histogram Comparision
 
- <img src = "images/im_different_se_range.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/im_different_se_range.png" width = "600">
 
 **Intepretion**:
 
@@ -299,10 +299,10 @@ ans =
 
 **Figure 04.1**: Histogram Comparision
 
- <img src = "images/t4_hist_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/t4_hist_comparision.png" alt = "Histogram Comparison'" width = "600">
  
  **Figure 04.2**: Histogram Equilization Image Comparision
- <img src = "images/histeq_im_comparision.png", alt = "Histogram Equilization Image Comparision'" width = "600">s
+ <img src = "images/histeq_im_comparision.png" alt = "Histogram Equilization Image Comparision'" width = "600">s
  
  **Intepretion**:
 While stretch enhanced image are quite well restored, the outcome from histeq() is not as statisfying. It generally overly enhance the contrast and produces a too strong bright and dark zones. When shows on histogram, the stretch enhanced image can remain a similar trend but the histogram equalized image remains a quite different distribution. 
@@ -370,7 +370,7 @@ ans =
 
 **Figure 05.1**: Image Comparision
 
- <img src = "images/t5_1_im_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/t5_1_im_comparision.png" alt = "Histogram Comparison'" width = "600">
  
 
 To furthermore testify if it's because the difference between edge and corner values determins the outcome, matlab code as attached below is written:
@@ -433,7 +433,7 @@ ans =
 
 **Figure 05.2**: Image Comparision
 
- <img src = "images/t5_2_im_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/t5_2_im_comparision.png" alt = "Histogram Comparison'" width = "600">
  
 Thus, the best 3*3 linear filter mained among all tested filters is:
 
@@ -506,7 +506,7 @@ ans =
 
 **Figure 05.3**: Image Comparision
 
- <img src = "images/t5_3_im_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/t5_3_im_comparision.png" width = "600">
 
 ### 06.Display and evaluate the PSNR of the obtained images. For each window size, comment on how effectively the noise is reduced while sharp edges and features in the image are preserved. Use the average filter 3X3 to filter the image im_SP. Compute the PSNR and display the filtered image. As you experimented with the mean and median algorithms what different “performance” did you notice? Was the average or median filter better, and why? 
 Run matlab code as attached below:
@@ -556,7 +556,7 @@ ans =
 
 **Figure 06.1**: Histogram Comparision
 
- <img src = "images/t6_im_comparision.png", alt = "Histogram Comparison'" width = "600">
+ <img src = "images/t6_im_comparision.png" width = "600">
  
   **Intepretion**:
 As can tell from figure 06.1, it's quite obvious that median method performs much better on noise cancelling,  while median algorthm successfully cancelled out all noise and restored the image, result image from mean algorthm  maintains reletively high rate of noises. And with median algorthm, a 3\*3 filter performs better than a 5\*5 filter. Not only does it has better PSNR, but also 3\*3 filter generates a sharper image while outcome from 5*5 filter is blurrier. 
