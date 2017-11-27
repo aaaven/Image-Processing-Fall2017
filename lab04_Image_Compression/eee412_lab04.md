@@ -1,4 +1,4 @@
-<img src = "images/logo.png", alt = "Histogram Comparison'" width = "150">
+<img src = "images/logo.png" alt = "Histogram Comparison'" width = "150">
 #### **[MultiMedia Telecommunication](http://www.xjtlu.edu.cn/en/find-a-programme/masters/msc-multimedia-telecommunications), M.S. Program @ [XJTLU](http://www.xjtlu.edu.cn/en/)**
 
 # Image and Video Processing | EEE412
@@ -200,7 +200,7 @@ CR =
 | 011  | 011  | 011  | 011 | 011 | 011 | 011 | 011 | 011 | 011 | 011 | 011 | 011 | 011 | 011 | 011 |
 
 ### **Observation and conclusion:**
-
+Huffman compression method is a lossless compression algorithm, which makes use of coding redundancy. This method is one kind of variable-length coding. It assigns more bits to lower frequency and less to higher frequency. Huffman algorithm would build different Huffman trees and produce the corresponding dictionaries and assign code to each pixel value repectively. When decompressing the image, algorithm also uses Huffman dictionary to find the corresponding pixel values. Comparing im and imo, it’s clear that input im is fully recovered with no loss, which cofirms huffman code could reduce file size and able to recover source fully after decompression. 
 
 ## Task 02: Image Compression
 ### Image compression function design:
@@ -261,7 +261,8 @@ rate = bits*8/(rows*cols);
 
 end
 ```
-Compare with JPEG and Comment:
+**Compare with JPEG and Comment:**
+Both methods are both lossy compression and common operations are DCT and quantization.Downsampling image with N*N non-overlapping blocks and then apply Discrete Cosine Transform, the first number in the obtained result (each block) is DC value, the average gray levels, and other numbers are AC coefficients, which are less more important and contain less image detail because its high frequency. After quantization, high frequency coefficients become around zero which can compress image but keep the general information. Different operation JPEG has is that it involves arranging the image components in a "zigzag" order employing run-length encoding (RLE) algorithm that groups similar frequencies together, inserting length coding zeros, and then using Huffman coding.
 
 ## Task 03: Image Decompression
 ### Image decompression function design:
@@ -293,9 +294,14 @@ imo=uint8(imo);
 
 end
 ```
-Comments:
+## Task 04: Rate-Distortion (RD) Performance Evaluation
+For evaluating rate, psnr and plot comparision of original image and recovered image, function **Rate_PSNR** are implemented like below:
 
-## Task 04:
+1. Generate Qmat with **gen_qmat** function provided in Task one.
+* Compress image with **compress_im** function and get compress rate.
+* Decompress image with **decompress_im** function and get the **imo**.
+* Caculate PSNR and plot and save comparision of original and recovered image. 
+
 ```matlab 
 function [rate_PSNR] = Rate_PSNR(im,QP,N)
 %genetate N Qmat
@@ -324,6 +330,7 @@ print(figure_name,'-dpng');
 rate_PSNR = [rate, PSNR];
 end
 ```
+Read the image and loop through all QP values for both N = 16 and N = 8 with function **Rate_PSNR**, two rate\_PSNR matrix will be obtained, and  jpeg method's Rate_PSNR is also obtained in the loop. Plot and save figure of Rate-PSNR for both jpeg and the compression method implemented in the this task (N = 16) and then plot and save Rate-PSNR for N = 16 and N = 8 in one figure with following code:
 
 ```matlab
 clear;clc;
@@ -373,37 +380,60 @@ legend('N = 16','N = 8');title('Bit Rate verse PSNR Evaluation');
 xlabel('Bit Rate');ylabel('PSNR');
 print('images/t04_Rate_PSNR2','-dpng');
 ```
+Rate-PSNR tables:
 
-
-
-```matlab
-
-```
-
-N = 16
+**N = 16**
 
 | QP         | 1 | 15 | 29 | 43 | 57 | 71 | 85 | 99 |
 |------------|---|----|----|:--:|----|----|----|----|
 | **Rate[bpp]** | 0.6515 | 3.4470 | 5.1993 | 6.6813 | 8.0453 | 9.9103 | 13.1551 | 27.0295 |
 | **PSNR[dB]**   | 27.8241 | 36.7812 | 39.2396 | 41.0414 | 42.7052 | 45.2407 | 49.9648 | Inf |
 
-JPEG
+**Figure4.01:** Comparision of original image and compressed image when QP = 1, 15, 29, and 99
+<img src = 'images/t04/N16_QP1.png'>
+<img src = 'images/t04/N16_QP15.png'>
+<img src = 'images/t04/N16_QP29.png'>
+<img src = 'images/t04/N16_QP99.png'>
+
+**Observation and comments:**
+When QP increases, both rate and psnr increases. Rate reaches 8+ when QP equals to 57 and keeps growing till 27, while PSNR is not quite satisfying when QP = 1 but increased to 36(a quite good outcome) after QP is changed to 15, which matches the objective feeling of the outcome images, it is the only not smooth recovered image when N= 16 and QP = 1, all others looks fine and similor to each other in human vision when QP is greater than 15.
+
+**JPEG**
 
 | QP        | 1       | 15      | 29      | 43      | 57      | 71      | 85      | 99      |
 |-----------|---------|---------|---------|---------|---------|---------|---------|---------|
 | **Rate[bpp]** | 0.1335  | 0.3076  | 0.4530  | 0.5776  | 0.7049  | 0.9145  | 1.3861  | 4.6481  |
 | **PSNR[dB]**  | 24.2411 | 31.9271 | 34.1452 | 35.3240 | 36.2201 | 37.3926 | 39.3942 | 54.5089 |
 
+**Figure4.02:** Jpeg compressed image when QP = 1, 15 and 29 (left to right).
+<img src = 'images/t04/lenna_jpeg_QP1.jpg' width = 230> <img src = 'images/t04/lenna_jpeg_QP15.jpg' width = 230> <img src = 'images/t04/lenna_jpeg_QP29.jpg' width = 230>
+
+**Observation and comments:**
+For Jpeg compression, rate and psnr both increase when QP rises. But rate keeps in a low range and psnr remains a quite good level. And image looks quite rough when QP = 1 and not very smooth when QP = 15, other images looks fine when a larger QP is taken.
+
+**Figure 4.3:** Bit Rate verse PSNR Evaluation N = 16 and Jpeg.
 <img src = 'images/t04_Rate_PSNR.png' width = 500>
 
-N = 8
+**Comparision of this compression method and Jpeg:**
+Jpeg works much better than this method obviouly , for the same psnr compressed result, jpeg has much lower bit rate. and for same bit rate, Jpeg has higher psnr.
+
+**N = 8**
 
 | QP | 1       | 15      | 29      | 43      | 57      | 71      | 85      | 99      |
 |----|---------|---------|---------|---------|---------|---------|---------|---------|
 |   **Rate[bpp]**  | 1.1597  | 5.2786  | 7.8274  | 9.6916  | 11.1232 | 13.0727 | 16.3927 | 30.3493 |
 |  **PSNR[dB]**   | 29.0170 | 38.9765 | 42.0455 | 44.3350 | 46.3198 | 49.1883 | 54.0898 | Inf |
 
+**Figure 4.4:** Bit Rate verse PSNR Evaluation N = 16 and N = 8.
 <img src = 'images/t04_Rate_PSNR2.png' width = 500>
+
+**Comparision of compression method when N = 16 and N = 8:**
+In general, N = 16 Qmat works better than N = 8 Qmat especially when QP is small. N 16 Qmat can obtain same psnr compressed image with a lower bit rate but the difference is not obvious after psnr is greater than around 39 or bit rate is greater than around 5.5. 
+
+To improve RD efficiency, a larger size Qmat can be used and also some other more efficient entropy encoding method can be considered.
+
+
+
 
 
 
