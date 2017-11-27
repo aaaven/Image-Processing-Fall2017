@@ -1,5 +1,5 @@
 <img src = "images/logo.png" alt = "Histogram Comparison'" width = "150">
-#### **[MultiMedia Telecommunication](http://www.xjtlu.edu.cn/en/find-a-programme/masters/msc-multimedia-telecommunications), M.S. Program @ [XJTLU](http://www.xjtlu.edu.cn/en/)**
+#### [MultiMedia Telecommunication](http://www.xjtlu.edu.cn/en/find-a-programme/masters/msc-multimedia-telecommunications), M.S. Program @ [XJTLU](http://www.xjtlu.edu.cn/en/)
 
 # Image and Video Processing | EEE412
 
@@ -406,6 +406,7 @@ When QP increases, both rate and psnr increases. Rate reaches 8+ when QP equals 
 | **PSNR[dB]**  | 24.2411 | 31.9271 | 34.1452 | 35.3240 | 36.2201 | 37.3926 | 39.3942 | 54.5089 |
 
 **Figure4.02:** Jpeg compressed image when QP = 1, 15 and 29 (left to right).
+
 <img src = 'images/t04/lenna_jpeg_QP1.jpg' width = 230> <img src = 'images/t04/lenna_jpeg_QP15.jpg' width = 230> <img src = 'images/t04/lenna_jpeg_QP29.jpg' width = 230>
 
 **Observation and comments:**
